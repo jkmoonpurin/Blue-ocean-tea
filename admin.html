@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poyoyio - 後台管理 (純靜態網頁版)</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="admin-body">
+    <div class="admin-container">
+        <header class="glass-header">
+            <div>
+                <h1>📊 Poyoyio 訂單管理與營收分析</h1>
+                <p>即時掌握營收狀況 (從瀏覽器本地儲存讀取)</p>
+            </div>
+            <a href="index.html" class="btn-outline">返回前台</a>
+        </header>
+        
+        <main class="admin-main">
+            <section class="stats-cards">
+                <div class="stat-card glass-panel">
+                    <h3>累積總營收</h3>
+                    <div class="stat-value">$<span id="total-revenue">0</span></div>
+                </div>
+                <div class="stat-card glass-panel">
+                    <h3>訂單數</h3>
+                    <div class="stat-value"><span id="total-orders">0</span> 筆</div>
+                </div>
+            </section>
+
+            <section class="orders-section glass-panel">
+                <h2>最新訂單</h2>
+                <div class="table-responsive">
+                    <table class="orders-table">
+                        <thead>
+                            <tr>
+                                <th>結帳時間</th>
+                                <th>單號</th>
+                                <th>訂單內容</th>
+                                <th>金額</th>
+                                <th>狀態</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="orders-tbody">
+                            <!-- Orders will be injected here via JavaScript -->
+                            <tr>
+                                <td colspan="6" style="text-align:center; padding: 20px; color: var(--text-muted);">載入中...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <script src="admin.js"></script>
+</body>
+</html>

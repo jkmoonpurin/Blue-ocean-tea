@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poyoyio - 點餐系統 (純靜態網頁版)</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header class="glass-header">
+            <div>
+                <h1>🍹 Poyoyio</h1>
+                <p>線上點餐，免排隊！(無後端單機版)</p>
+            </div>
+            <a href="admin.html" class="btn-outline">後台管理</a>
+        </header>
+        
+        <main>
+            <section class="menu-section" id="menu-container">
+                <!-- Drinks will be injected here via JavaScript -->
+            </section>
+            
+            <section class="cart-section glass-panel">
+                <h2>購物車</h2>
+                <div id="cart-items" class="cart-items">
+                    <p class="empty-cart">購物車還是空的哦！</p>
+                </div>
+                <div class="cart-footer">
+                    <div class="total">總計: $<span id="cart-total">0</span></div>
+                    <button id="checkout-btn" class="btn-primary" disabled>確認結帳</button>
+                    <!-- Button to clear localStorage -->
+                    <button id="clear-data-btn" class="btn-outline" style="width:100%; margin-top:10px; border-color:#ccc; color:#666; font-size:0.9rem;">清除本機資料 (清空訂單)</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="toast hidden">訂單送出成功！</div>
+
+    <script src="app.js"></script>
+</body>
+</html>
