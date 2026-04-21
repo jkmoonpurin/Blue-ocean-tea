@@ -3,43 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Poyoyio - 點餐系統 (純靜態網頁版)</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>Blue Ocean 藍海茶飲</title>
+    <style>
+        :root { --blue: #0077be; --bg: #f0f8ff; }
+        body { font-family: sans-serif; background: var(--bg); color: #333; text-align: center; margin: 0; }
+        header { background: var(--blue); color: white; padding: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .menu { display: flex; flex-wrap: wrap; justify-content: center; padding: 20px; }
+        .item { background: white; border-radius: 15px; margin: 15px; padding: 20px; width: 220px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border-top: 5px solid var(--blue); }
+        button { background: var(--blue); color: white; border: none; padding: 10px 20px; border-radius: 20px; cursor: pointer; font-weight: bold; }
+        button:hover { background: #005a91; transform: scale(1.05); transition: 0.2s; }
+    </style>
 </head>
 <body>
-    <div class="app-container">
-        <header class="glass-header">
-            <div>
-                <h1>🍹 Poyoyio</h1>
-                <p>線上點餐，免排隊！(無後端單機版)</p>
-            </div>
-            <a href="admin.html" class="btn-outline">後台管理</a>
-        </header>
-        
-        <main>
-            <section class="menu-section" id="menu-container">
-                <!-- Drinks will be injected here via JavaScript -->
-            </section>
-            
-            <section class="cart-section glass-panel">
-                <h2>購物車</h2>
-                <div id="cart-items" class="cart-items">
-                    <p class="empty-cart">購物車還是空的哦！</p>
-                </div>
-                <div class="cart-footer">
-                    <div class="total">總計: $<span id="cart-total">0</span></div>
-                    <button id="checkout-btn" class="btn-primary" disabled>確認結帳</button>
-                    <!-- Button to clear localStorage -->
-                    <button id="clear-data-btn" class="btn-outline" style="width:100%; margin-top:10px; border-color:#ccc; color:#666; font-size:0.9rem;">清除本機資料 (清空訂單)</button>
-                </div>
-            </section>
-        </main>
+    <header>
+        <h1>🌊 Blue Ocean 藍海茶飲</h1>
+        <p>每一口都是沁涼的海洋氣息</p>
+    </header>
+    <div class="menu">
+        <div class="item">
+            <h3>深海珍珠奶茶</h3>
+            <p>$60</p>
+            <button onclick="addOrder('深海珍珠奶茶')">我要點餐</button>
+        </div>
+        <div class="item">
+            <h3>海洋漂浮蘇打</h3>
+            <p>$70</p>
+            <button onclick="addOrder('海洋漂浮蘇打')">我要點餐</button>
+        </div>
     </div>
-
-    <!-- Notification Toast -->
-    <div id="toast" class="toast hidden">訂單送出成功！</div>
-
-    <script src="app.js"></script>
+    <script>
+        function addOrder(name) {
+            let orders = JSON.parse(localStorage.getItem('drink_orders') || '[]');
+            orders.push({ name: name, time: new Date().toLocaleTimeString() });
+            localStorage.setItem('drink_orders', JSON.stringify(orders));
+            alert('【' + name + '】已送出訂單！');
+        }
+    </script>
 </body>
 </html>
